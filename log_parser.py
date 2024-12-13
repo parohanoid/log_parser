@@ -15,7 +15,7 @@ def first(input_arg):
 
 def last(input_arg, line_count):
     if input_arg is not None:
-        if fileinput.filelineno() >= (line_count - input_arg):
+        if fileinput.lineno() >= (line_count - input_arg):
             return True
         else:
             return False
@@ -99,7 +99,6 @@ def main():
         default=None,
         type=str,
         help="Print lines that contain an IPv4 address, if input is given matching IPs are highlighted else all lines with IPv4 are printed.",
-        default=True,
     )
     # matching IPs are highlighted
 
@@ -111,7 +110,6 @@ def main():
         default=None,
         type=str,
         help="Print lines that contain an IPv6 address in standard notation, if input is given matching IPs are highlighted else all lines with IPv6 are printed.",
-        default=True,
     )
     # matching IPs are highlighted
 
@@ -128,9 +126,11 @@ def main():
 
     args = parser.parse_args()
 
-    # line_count of the last file
-    with open(args.files[-1]) as file:
-        line_count = sum(1 for _ in file)
+    # total line count
+    line_count = 0
+    with fileinput.input(files=args.files or ("-",)) as f:
+        for line in f:
+            line_count += 1
 
     print("Output:")
 
@@ -192,6 +192,13 @@ def main():
     #             return True
     #     return False
 
+
+    # Tasks:
+    # 1. multiple files lines - done
+    # 2. errors
+    # 3. use re for timestamp?
+    # 4. test suite
+    # 5. 
     
 
 
