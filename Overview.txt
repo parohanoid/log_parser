@@ -1,0 +1,35 @@
+﻿Log parsing utility v1.01:
+==============================================================================
+
+Usage: ./util.py [OPTION]... [FILE]
+Supported options:
+---------------------
+  -h, --help         Print help
+  -f, --first=NUM    Print first NUM lines
+  -l, --last=NUM     Print last NUM lines
+  -t, --timestamps   Print lines that contain a timestamp in HH:MM:SS format
+  -i, --ipv4         Print lines that contain an IPv4 address, matching IPs
+                     are highlighted
+  -I, --ipv6         Print lines that contain an IPv6 address (standard
+                     notation), matching IPs are highlighted
+If FILE is omitted, standard input is used instead.
+If multiple options are used at once, the result is the intersection of their
+results.
+The result (matching lines) is printed to standard output.
+Example supported usage:
+------------------------
+./util.py -h
+<prints help>
+cat Linux_2k.log | ./util.py --first 10
+<prints the first 10 lines of Linux_2k.log>
+./util.py -l 5 Linux_2k.log
+<prints the last 5 lines of Linux_2k.log>
+./utils.py Linux_2k.log --timestamps
+<prints any lines from Linux_2k.log that contain a timestamp>
+./util.py Linux_2k.log --ipv4
+<prints any lines from Linux_2k.log that contain an IPv4 address>
+./util.py Linux_2k.log --ipv6
+<prints any lines from test_4.log that contain an IPv6 address>
+./util.py Linux_2k.log --ipv4 --last 50
+<prints any of the last 50 lines from test_5.log that contain an IPv4 address>
+==============================================================================
