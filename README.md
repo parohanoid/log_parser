@@ -1,5 +1,5 @@
 # Log Parser
-#### Video Demo:  <https://youtu.be/F6DotB-2T4E>
+
 #### Description:
 
 
