@@ -120,7 +120,7 @@ pip install -r requirements.txt
 
 Run all tests and generate an HTML report:
 ```bash
-pytest tests/ --html=report.html --self-contained-html
+pytest
 ```
 
 This command generates a `report.html` file that you can open in any web browser for a detailed view of the test results.
